@@ -1,0 +1,38 @@
+HedgedRequestKit demo — tail latency vs. extra spend
+====================================================
+
+1. Unhedged: 10 requests, primary has a 300ms tail on 2 of them
+   latency: fast (<60ms): 8, slow (>=200ms): 2
+   worst case: slow (>=200ms); hedges sent 0/10 (0% extra spend), hedge wins 0, budget denials 0
+
+2. Hedged at 80ms: same traffic, backup answers in 20ms
+   q4: backup won by hedge -> hedged (<200ms)
+   q9: backup won by hedge -> hedged (<200ms)
+   latency: fast (<60ms): 8, hedged (<200ms): 2
+   worst case: hedged (<200ms); hedges sent 2/10 (20% extra spend), hedge wins 2, budget denials 0
+
+3. Provider-wide slowdown: every primary call takes 300ms, budget = 10% + burst 2
+   q1: backup won by hedge -> hedged (<200ms)
+   q2: backup won by hedge -> hedged (<200ms)
+   q3: primary hedge due, BUDGET DENIED -> slow (>=200ms)
+   q4: primary hedge due, BUDGET DENIED -> slow (>=200ms)
+   q5: primary hedge due, BUDGET DENIED -> slow (>=200ms)
+   q6: primary hedge due, BUDGET DENIED -> slow (>=200ms)
+   q7: primary hedge due, BUDGET DENIED -> slow (>=200ms)
+   q8: primary hedge due, BUDGET DENIED -> slow (>=200ms)
+   latency: hedged (<200ms): 2, slow (>=200ms): 6
+   worst case: slow (>=200ms); hedges sent 2/8 (25% extra spend), hedge wins 2, budget denials 6
+
+4. Primary returns 429: immediate failover, no budget spent
+   winner: backup (failover) -> fast (<60ms), not after the 5s hedge delay
+   failures: ["primary: 429 rate limited"]
+
+5. Both providers fail
+   allFailed: ["primary", "backup"], budgetDenied: false
+
+6. Adaptive delay (p95, min 50ms, max 5s, 20 samples before trusting it)
+   before any traffic (fallback): 1.0 seconds
+   after 19 x 120ms + 1 x 900ms: 0.12 seconds
+   after 20 more x 30ms: 0.12 seconds
+   after 60 more x 10ms (window of 100): 0.12 seconds
+   after 100 x 10ms (slow samples evicted; clamped to the 50ms minimum): 0.05 seconds

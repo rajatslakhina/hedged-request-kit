@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="744" viewBox="0 0 980 744">
+<rect width="980" height="744" rx="10" fill="#0d1117"/>
+<circle cx="20" cy="18" r="6" fill="#ff5f56"/><circle cx="40" cy="18" r="6" fill="#ffbd2e"/><circle cx="60" cy="18" r="6" fill="#27c93f"/>
+<text x="490.0" y="22" text-anchor="middle" font-family="Menlo,monospace" font-size="12" fill="#8b949e">$&#160;swift&#160;run&#160;HedgedRequestDemo</text>
+<text x="16" y="50" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">HedgedRequestKit&#160;demo&#160;&#8212;&#160;tail&#160;latency&#160;vs.&#160;extra&#160;spend</text>
+<text x="16" y="68" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">====================================================</text>
+<text x="16" y="86" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9"></text>
+<text x="16" y="104" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">1.&#160;Unhedged:&#160;10&#160;requests,&#160;primary&#160;has&#160;a&#160;300ms&#160;tail&#160;on&#160;2&#160;of&#160;them</text>
+<text x="16" y="122" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;latency:&#160;fast&#160;(&lt;60ms):&#160;8,&#160;slow&#160;(&gt;=200ms):&#160;2</text>
+<text x="16" y="140" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;worst&#160;case:&#160;slow&#160;(&gt;=200ms);&#160;hedges&#160;sent&#160;0/10&#160;(0%&#160;extra&#160;spend),&#160;hedge&#160;wins&#160;0,&#160;budget&#160;denials&#160;0</text>
+<text x="16" y="158" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9"></text>
+<text x="16" y="176" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">2.&#160;Hedged&#160;at&#160;80ms:&#160;same&#160;traffic,&#160;backup&#160;answers&#160;in&#160;20ms</text>
+<text x="16" y="194" font-family="Menlo,monospace" font-size="12" fill="#3fb950">&#160;&#160;&#160;q4:&#160;backup&#160;won&#160;by&#160;hedge&#160;-&gt;&#160;hedged&#160;(&lt;200ms)</text>
+<text x="16" y="212" font-family="Menlo,monospace" font-size="12" fill="#3fb950">&#160;&#160;&#160;q9:&#160;backup&#160;won&#160;by&#160;hedge&#160;-&gt;&#160;hedged&#160;(&lt;200ms)</text>
+<text x="16" y="230" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;latency:&#160;fast&#160;(&lt;60ms):&#160;8,&#160;hedged&#160;(&lt;200ms):&#160;2</text>
+<text x="16" y="248" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;worst&#160;case:&#160;hedged&#160;(&lt;200ms);&#160;hedges&#160;sent&#160;2/10&#160;(20%&#160;extra&#160;spend),&#160;hedge&#160;wins&#160;2,&#160;budget&#160;denials&#160;0</text>
+<text x="16" y="266" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9"></text>
+<text x="16" y="284" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">3.&#160;Provider-wide&#160;slowdown:&#160;every&#160;primary&#160;call&#160;takes&#160;300ms,&#160;budget&#160;=&#160;10%&#160;+&#160;burst&#160;2</text>
+<text x="16" y="302" font-family="Menlo,monospace" font-size="12" fill="#3fb950">&#160;&#160;&#160;q1:&#160;backup&#160;won&#160;by&#160;hedge&#160;-&gt;&#160;hedged&#160;(&lt;200ms)</text>
+<text x="16" y="320" font-family="Menlo,monospace" font-size="12" fill="#3fb950">&#160;&#160;&#160;q2:&#160;backup&#160;won&#160;by&#160;hedge&#160;-&gt;&#160;hedged&#160;(&lt;200ms)</text>
+<text x="16" y="338" font-family="Menlo,monospace" font-size="12" fill="#f0883e">&#160;&#160;&#160;q3:&#160;primary&#160;hedge&#160;due,&#160;BUDGET&#160;DENIED&#160;-&gt;&#160;slow&#160;(&gt;=200ms)</text>
+<text x="16" y="356" font-family="Menlo,monospace" font-size="12" fill="#f0883e">&#160;&#160;&#160;q4:&#160;primary&#160;hedge&#160;due,&#160;BUDGET&#160;DENIED&#160;-&gt;&#160;slow&#160;(&gt;=200ms)</text>
+<text x="16" y="374" font-family="Menlo,monospace" font-size="12" fill="#f0883e">&#160;&#160;&#160;q5:&#160;primary&#160;hedge&#160;due,&#160;BUDGET&#160;DENIED&#160;-&gt;&#160;slow&#160;(&gt;=200ms)</text>
+<text x="16" y="392" font-family="Menlo,monospace" font-size="12" fill="#f0883e">&#160;&#160;&#160;q6:&#160;primary&#160;hedge&#160;due,&#160;BUDGET&#160;DENIED&#160;-&gt;&#160;slow&#160;(&gt;=200ms)</text>
+<text x="16" y="410" font-family="Menlo,monospace" font-size="12" fill="#f0883e">&#160;&#160;&#160;q7:&#160;primary&#160;hedge&#160;due,&#160;BUDGET&#160;DENIED&#160;-&gt;&#160;slow&#160;(&gt;=200ms)</text>
+<text x="16" y="428" font-family="Menlo,monospace" font-size="12" fill="#f0883e">&#160;&#160;&#160;q8:&#160;primary&#160;hedge&#160;due,&#160;BUDGET&#160;DENIED&#160;-&gt;&#160;slow&#160;(&gt;=200ms)</text>
+<text x="16" y="446" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;latency:&#160;hedged&#160;(&lt;200ms):&#160;2,&#160;slow&#160;(&gt;=200ms):&#160;6</text>
+<text x="16" y="464" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;worst&#160;case:&#160;slow&#160;(&gt;=200ms);&#160;hedges&#160;sent&#160;2/8&#160;(25%&#160;extra&#160;spend),&#160;hedge&#160;wins&#160;2,&#160;budget&#160;denials&#160;6</text>
+<text x="16" y="482" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9"></text>
+<text x="16" y="500" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">4.&#160;Primary&#160;returns&#160;429:&#160;immediate&#160;failover,&#160;no&#160;budget&#160;spent</text>
+<text x="16" y="518" font-family="Menlo,monospace" font-size="12" fill="#3fb950">&#160;&#160;&#160;winner:&#160;backup&#160;(failover)&#160;-&gt;&#160;fast&#160;(&lt;60ms),&#160;not&#160;after&#160;the&#160;5s&#160;hedge&#160;delay</text>
+<text x="16" y="536" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;failures:&#160;[&quot;primary:&#160;429&#160;rate&#160;limited&quot;]</text>
+<text x="16" y="554" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9"></text>
+<text x="16" y="572" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">5.&#160;Both&#160;providers&#160;fail</text>
+<text x="16" y="590" font-family="Menlo,monospace" font-size="12" fill="#f0883e">&#160;&#160;&#160;allFailed:&#160;[&quot;primary&quot;,&#160;&quot;backup&quot;],&#160;budgetDenied:&#160;false</text>
+<text x="16" y="608" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9"></text>
+<text x="16" y="626" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">6.&#160;Adaptive&#160;delay&#160;(p95,&#160;min&#160;50ms,&#160;max&#160;5s,&#160;20&#160;samples&#160;before&#160;trusting&#160;it)</text>
+<text x="16" y="644" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;before&#160;any&#160;traffic&#160;(fallback):&#160;1.0&#160;seconds</text>
+<text x="16" y="662" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;after&#160;19&#160;x&#160;120ms&#160;+&#160;1&#160;x&#160;900ms:&#160;0.12&#160;seconds</text>
+<text x="16" y="680" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;after&#160;20&#160;more&#160;x&#160;30ms:&#160;0.12&#160;seconds</text>
+<text x="16" y="698" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;after&#160;60&#160;more&#160;x&#160;10ms&#160;(window&#160;of&#160;100):&#160;0.12&#160;seconds</text>
+<text x="16" y="716" font-family="Menlo,monospace" font-size="12" fill="#c9d1d9">&#160;&#160;&#160;after&#160;100&#160;x&#160;10ms&#160;(slow&#160;samples&#160;evicted;&#160;clamped&#160;to&#160;the&#160;50ms&#160;minimum):&#160;0.05&#160;seconds</text>
+</svg>
